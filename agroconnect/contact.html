@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Get Started — AgroConnect CI</title>
+  <meta name="description" content="Register as a farmer, start shopping, or contact the AgroConnect CI team in Abidjan."/>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌱</text></svg>"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"><link rel="stylesheet" href="">
+  <style>
+    .tab-bar {
+      display: flex; gap: 0; margin-bottom: 2.5rem;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1.5px solid rgba(0,0,0,0.1);
+      width: fit-content;
+    }
+    .tab-btn {
+      padding: 12px 28px;
+      background: var(--white);
+      border: none;
+      font-family: var(--ff-body);
+      font-size: 0.88rem; font-weight: 600;
+      cursor: pointer; color: var(--text-muted);
+      transition: all 0.25s;
+      border-right: 1.5px solid rgba(0,0,0,0.1);
+    }
+    .tab-btn:last-child { border-right: none; }
+    .tab-btn.active { background: var(--green-mid); color: var(--white); }
+
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    .form-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    @media (max-width: 600px) { .form-grid-2 { grid-template-columns: 1fr; } }
+
+    .contact-info-item {
+      display: flex; align-items: flex-start; gap: 1rem;
+      padding: 1.5rem;
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      transition: transform 0.25s;
+    }
+    .contact-info-item:hover { transform: translateY(-3px); }
+    .contact-info-icon {
+      width: 48px; height: 48px;
+      background: var(--gold-light);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem; flex-shrink: 0;
+    }
+    .contact-info-label { font-family: var(--ff-mono); font-size: 0.68rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 4px; }
+    .contact-info-value { font-weight: 600; font-size: 0.9rem; color: var(--text-dark); }
+    .contact-info-sub   { font-size: 0.8rem; color: var(--text-muted); margin-top: 2px; }
+
+    .social-row { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+    .social-btn {
+      display: flex; align-items: center; gap: 8px;
+      padding: 10px 20px;
+      border-radius: 100px;
+      border: 1.5px solid rgba(0,0,0,0.12);
+      font-size: 0.85rem; font-weight: 600;
+      cursor: pointer; background: var(--white);
+      transition: all 0.2s;
+      color: var(--text-dark);
+    }
+    .social-btn:hover { border-color: var(--green-mid); color: var(--green-mid); transform: translateY(-2px); }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <a href="index.html" class="nav__logo">
+    <div class="nav__logo-icon"><img src="img/business_logo.jfif" alt="AgroConnect CI" width="50px" height="50px" style="border-radius:50%"></div>
+    Agro<span>Connect</span>&nbsp;CI
+  </a>
+  <ul class="nav__links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="products.html">Products</a></li>
+    <li><a href="how-it-works.html">How It Works</a></li>
+    <li><a href="about.html">About Us</a></li>
+    <li><a href="contact.html" class="nav__cta">Get Started</a></li>
+  </ul>
+  <div class="nav__hamburger" id="hamburger"><span></span><span></span><span></span></div>
+</nav>
+<div class="nav__mobile" id="mobileMenu">
+  <a href="index.html">Home</a>
+  <a href="products.html">Products</a>
+  <a href="how-it-works.html">How It Works</a>
+  <a href="about.html">About Us</a>
+  <a href="contact.html" class="nav__cta">Get Started</a>
+</div>
+
+<div class="page">
+
+<!-- Page Hero -->
+<div class="page-hero">
+  <div class="page-hero__content">
+    <div class="section__tag">Join Us</div>
+    <h1 class="page-hero__title">Get Started with<br/>AgroConnect CI</h1>
+    <p class="page-hero__desc">Register as a farmer, send us a message, or reach out directly. We respond within 24 hours.</p>
+  </div>
+</div>
+
+<!-- ── Main Contact Section ───────────────────────────────────────────── -->
+<section class="section">
+  <div class="grid-2" style="gap:4rem;align-items:start;">
+
+    <!-- FORMS -->
+    <div class="reveal">
+      <div class="tab-bar">
+        <button class="tab-btn active" data-tab="farmer">👩‍🌾 I'm a Farmer</button>
+        <button class="tab-btn" data-tab="buyer">🛒 I want to Buy</button>
+        <button class="tab-btn" data-tab="business">🏢 Business</button>
+        <button class="tab-btn" data-tab="general">✉️ General</button>
+      </div>
+
+      <!-- Farmer Registration -->
+      <div class="tab-panel active" id="panel-farmer">
+        <h3 style="font-family:var(--ff-display);font-size:1.4rem;font-weight:900;margin-bottom:0.5rem;">Register as a Farmer</h3>
+        <p style="font-size:0.88rem;color:var(--text-muted);margin-bottom:1.5rem;">Free registration. No hidden fees. Start selling within 48 hours.</p>
+        <div id="farmerForm">
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label>Full Name *</label>
+              <input type="text" placeholder="Koné Aminata"/>
+            </div>
+            <div class="form-group">
+              <label>Phone Number *</label>
+              <input type="tel" placeholder="+225 07 00 00 00 00"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Region / Location *</label>
+            <input type="text" placeholder="e.g. Grand-Lahou, Région du Lôh-Djiboua"/>
+          </div>
+          <div class="form-group">
+            <label>Main Products You Sell *</label>
+            <input type="text" placeholder="e.g. Cassava, Yams, Tomatoes"/>
+          </div>
+          <div class="form-group">
+            <label>How did you hear about us?</label>
+            <select>
+              <option value="">Select...</option>
+              <option>WhatsApp / Social Media</option>
+              <option>Friend or Family</option>
+              <option>Market / Event</option>
+              <option>Radio</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Anything to add?</label>
+            <textarea placeholder="Tell us a bit about your farm and what you grow..."></textarea>
+          </div>
+          <button class="btn btn--green btn--lg" style="width:100%;justify-content:center;" onclick="submitForm('farmerSuccess')">
+            Register My Farm 
+          </button>
+        </div>
+        <div class="form-success" id="farmerSuccess">
+          <div style="font-size:3rem;margin-bottom:0.5rem;">🌱</div>
+          <h3>Registration Received!</h3>
+          <p>Thank you! Our team will contact you within 48 hours to complete your seller profile. Welcome to AgroConnect CI.</p>
+        </div>
+      </div>
+
+      <!-- Buyer Registration -->
+      <div class="tab-panel" id="panel-buyer">
+        <h3 style="font-family:var(--ff-display);font-size:1.4rem;font-weight:900;margin-bottom:0.5rem;">Start Buying Fresh</h3>
+        <p style="font-size:0.88rem;color:var(--text-muted);margin-bottom:1.5rem;">Join thousands of Abidjan households buying directly from farmers.</p>
+        <div id="buyerForm">
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label>Full Name *</label>
+              <input type="text" placeholder="Traoré Fatoumata"/>
+            </div>
+            <div class="form-group">
+              <label>Phone Number *</label>
+              <input type="tel" placeholder="+225 07 00 00 00 00"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Commune / District in Abidjan *</label>
+            <select>
+              <option value="">Select your area...</option>
+              <option>Cocody</option>
+              <option>Yopougon</option>
+              <option>Marcory</option>
+              <option>Treichville</option>
+              <option>Adjamé</option>
+              <option>Plateau</option>
+              <option>Abobo</option>
+              <option>Koumassi</option>
+              <option>Port-Bouët</option>
+              <option>Attécoubé</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Preferred Payment Method</label>
+            <select>
+              <option>MTN Mobile Money</option>
+              <option>Orange Money</option>
+              <option>Wave CI</option>
+              <option>Cash on Delivery</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>What do you usually buy? (Optional)</label>
+            <input type="text" placeholder="e.g. Vegetables, Plantain, Attiéké"/>
+          </div>
+          <button class="btn btn--primary btn--lg" style="width:100%;justify-content:center;" onclick="submitForm('buyerSuccess')">
+            Create My Account 
+          </button>
+        </div>
+        <div class="form-success" id="buyerSuccess">
+          <div style="font-size:3rem;margin-bottom:0.5rem;">🛒</div>
+          <h3>Welcome to AgroConnect CI!</h3>
+          <p>Your account is being set up. You'll receive a WhatsApp message from us shortly with how to place your first order.</p>
+        </div>
+      </div>
+
+      <!-- Business Registration -->
+      <div class="tab-panel" id="panel-business">
+        <h3 style="font-family:var(--ff-display);font-size:1.4rem;font-weight:900;margin-bottom:0.5rem;">B2B Partnership</h3>
+        <p style="font-size:0.88rem;color:var(--text-muted);margin-bottom:1.5rem;">For restaurants, hotels, canteens, and retailers — get daily fresh supply with bulk pricing.</p>
+        <div id="businessForm">
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label>Business Name *</label>
+              <input type="text" placeholder="Restaurant Le Cocotier"/>
+            </div>
+            <div class="form-group">
+              <label>Contact Person *</label>
+              <input type="text" placeholder="Bamba Sékou"/>
+            </div>
+          </div>
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label>Phone *</label>
+              <input type="tel" placeholder="+225 07 00 00 00 00"/>
+            </div>
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" placeholder="contact@restaurant.ci"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Type of Business *</label>
+            <select>
+              <option value="">Select...</option>
+              <option>Restaurant / Maquis</option>
+              <option>Hotel</option>
+              <option>Supermarket / Boutique</option>
+              <option>School Canteen</option>
+              <option>Company Cafeteria</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Estimated Monthly Volume</label>
+            <select>
+              <option>Less than 50 kg</option>
+              <option>50 – 200 kg</option>
+              <option>200 – 500 kg</option>
+              <option>500 kg+</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Products Needed</label>
+            <textarea placeholder="List the products and quantities you typically need per week..."></textarea>
+          </div>
+          <button class="btn btn--green btn--lg" style="width:100%;justify-content:center;" onclick="submitForm('businessSuccess')">
+            Request B2B Partnership 
+          </button>
+        </div>
+        <div class="form-success" id="businessSuccess">
+          <div style="font-size:3rem;margin-bottom:0.5rem;">🤝</div>
+          <h3>Partnership Request Sent!</h3>
+          <p>Our B2B team will contact you within 24 hours to discuss pricing, delivery schedules, and setup your business account.</p>
+        </div>
+      </div>
+
+      <!-- General Contact -->
+      <div class="tab-panel" id="panel-general">
+        <h3 style="font-family:var(--ff-display);font-size:1.4rem;font-weight:900;margin-bottom:0.5rem;">Send Us a Message</h3>
+        <p style="font-size:0.88rem;color:var(--text-muted);margin-bottom:1.5rem;">Questions, feedback, or media inquiries. We'll get back to you within 24 hours.</p>
+        <div id="generalForm">
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label>Your Name *</label>
+              <input type="text" placeholder="Your full name"/>
+            </div>
+            <div class="form-group">
+              <label>Phone / Email *</label>
+              <input type="text" placeholder="+225 or email@example.com"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Subject</label>
+            <select>
+              <option>General Question</option>
+              <option>Technical Issue</option>
+              <option>Partnership Inquiry</option>
+              <option>Press / Media</option>
+              <option>Complaint</option>
+              <option>Feedback / Suggestion</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Message *</label>
+            <textarea placeholder="How can we help you?"></textarea>
+          </div>
+          <button class="btn btn--green btn--lg" style="width:100%;justify-content:center;" onclick="submitForm('generalSuccess')">
+            Send Message 
+          </button>
+        </div>
+        <div class="form-success" id="generalSuccess">
+          <div style="font-size:3rem;margin-bottom:0.5rem;">✉️</div>
+          <h3>Message Sent!</h3>
+          <p>Thanks for reaching out! We'll reply to your message within 24 hours. You can also reach us on WhatsApp for faster support.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- CONTACT INFO -->
+    <div>
+      <div class="reveal">
+        <div class="section__tag">Contact Info</div>
+        <h2 class="section__title" style="font-size:2rem;">Reach Us Directly</h2>
+        <p class="section__subtitle" style="margin-bottom:2rem;">Prefer to talk? Here's how to find us.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:1rem;margin-bottom:2rem;">
+        <div class="contact-info-item reveal reveal-delay-1">
+          <div class="contact-info-icon">📍</div>
+          <div>
+            <div class="contact-info-label">Office</div>
+            <div class="contact-info-value">Abidjan, Côte d'Ivoire</div>
+            <div class="contact-info-sub">Zone Cocody — by appointment</div>
+          </div>
+        </div>
+        <div class="contact-info-item reveal reveal-delay-2">
+          <div class="contact-info-icon">📞</div>
+          <div>
+            <div class="contact-info-label">Phone / WhatsApp</div>
+            <div class="contact-info-value">+225 07 00 00 00 00</div>
+            <div class="contact-info-sub">Mon–Sat, 7am – 7pm</div>
+          </div>
+        </div>
+        <div class="contact-info-item reveal reveal-delay-3">
+          <div class="contact-info-icon">✉️</div>
+          <div>
+            <div class="contact-info-label">Email</div>
+            <div class="contact-info-value">hello@agroconnect.ci</div>
+            <div class="contact-info-sub">Response within 24 hours</div>
+          </div>
+        </div>
+        <div class="contact-info-item reveal">
+          <div class="contact-info-icon"><img src="img/whatsapp_logo.jfif" alt="WhatsApp" style="width: 65px; height: 65px; border-radius: 50%;"></div>
+          <div>
+            <div class="contact-info-label">WhatsApp Support</div>
+            <div class="contact-info-value">Chat for instant help</div>
+            <div class="contact-info-sub">Fastest way to get support for orders</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal">
+        <div class="section__tag" style="margin-bottom:1rem;">Follow Us</div>
+        <div class="social-row">
+          <a class="social-btn" href="#"><i class="fa-brands fa-facebook fb-icon" style=".fb-icon {font-size: 24px;color: #1877f2;cursor: pointer;transition: 0.3s;}.fb-icon:hover {color: #0d5bd3;transform: scale(1.2);}"></i>Facebook</a>
+          <a class="social-btn" href="#"><i class="fa-brands fa-instagram"></i>Instagram</a>
+          <a class="social-btn" href="#"><i class="fa-brands fa-whatsapp"></i>WhatsApp</a>
+          <a class="social-btn" href="#"><i class="fa-brands fa-linkedin"></i>LinkedIn</a>
+        </div>
+      </div>
+
+      <div class="reveal" style="margin-top:2rem;background:var(--green-dark);border-radius:var(--radius-lg);padding:1.8rem;">
+        <div style="color:var(--gold);font-family:var(--ff-mono);font-size:0.72rem;letter-spacing:2px;text-transform:uppercase;margin-bottom:0.8rem;">Quick Tips</div>
+        <ul style="display:flex;flex-direction:column;gap:0.6rem;">
+          <li style="font-size:0.85rem;color:rgba(255,255,255,0.65);display:flex;gap:8px;align-items:flex-start;">
+            <span style="color:var(--gold);">.</span> For urgent order issues, WhatsApp is fastest
+          </li>
+          <li style="font-size:0.85rem;color:rgba(255,255,255,0.65);display:flex;gap:8px;align-items:flex-start;">
+            <span style="color:var(--gold);">.</span> Farmer onboarding calls available in Dioula, Baoulé &amp; French
+          </li>
+          <li style="font-size:0.85rem;color:rgba(255,255,255,0.65);display:flex;gap:8px;align-items:flex-start;">
+            <span style="color:var(--gold);">.</span> B2B inquiries are handled within 24h by a dedicated manager
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+</div><!-- /page -->
+
+<footer class="footer">
+  <div class="footer__grid">
+    <div class="footer__brand">
+      <div class="nav__logo" style="margin-bottom:1rem;">
+        <div class="nav__logo-icon">🌱</div>
+        Agro<span>Connect</span>&nbsp;CI
+      </div>
+      <p>Bridging the gap between rural producers and urban consumers. Growing Côte d'Ivoire, digitally.</p>
+    </div>
+    <div class="footer__col"><h4>Platform</h4><ul><li><a href="products.html">Browse Products</a></li><li><a href="how-it-works.html">How It Works</a></li><li><a href="contact.html">Become a Seller</a></li></ul></div>
+    <div class="footer__col"><h4>Company</h4><ul><li><a href="about.html">About Us</a></li><li><a href="about.html#mission">Our Mission</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div class="footer__col"><h4>Contact</h4><ul><li><a href="#">📍 Abidjan, CI</a></li><li><a href="tel:+2250700000000">📞 +225 07 00 00 00 00</a></li><li><a href="mailto:hello@agroconnect.ci">✉️ hello@agroconnect.ci</a></li></ul></div>
+  </div>
+  <div class="footer__bottom">
+    <p>© 2025–2026 AgroConnect CI. All rights reserved. Made in 🇨🇮</p>
+    <div class="footer__socials"><a href="#">f</a><a href="#">ig</a><a href="#">wa</a></div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script>
+  // Tab switching
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('panel-' + btn.dataset.tab).classList.add('active');
+    });
+  });
+
+  // Form submission (simulated)
+  function submitForm(successId) {
+    const panel  = document.getElementById(successId).closest('.tab-panel');
+    const formEl = panel.querySelector('[id$="Form"]');
+    const sucEl  = document.getElementById(successId);
+
+    // Basic validation — check required inputs
+    let valid = true;
+    panel.querySelectorAll('input[placeholder], textarea').forEach(inp => {
+      if (!inp.value.trim() && inp.closest('.form-group') && inp.type !== 'email') {
+        // non-blocking — just show success for demo
+      }
+    });
+
+    formEl.style.display = 'none';
+    sucEl.style.display  = 'block';
+  }
+</script>
+</body>
+</html>

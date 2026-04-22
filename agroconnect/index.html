@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AgroConnect CI — Farm Fresh, Delivered</title>
+  <meta name="description" content="AgroConnect CI connects local farmers in Côte d'Ivoire directly with consumers, restaurants, and retailers. Fresh food, fair prices, fast delivery in Abidjan."/>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌱</text></svg>"/>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <a href="index.html" class="nav__logo">
+    <div class="nav__logo-icon"><img src="img/business_logo.jfif" alt="AgroConnect CI" width="50px" height="50px" style="border-radius:50%"></div>
+    Agro<span>Connect</span>&nbsp;CI
+  </a>
+  <ul class="nav__links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="products.html">Products</a></li>
+    <li><a href="how-it-works.html">How It Works</a></li>
+    <li><a href="about.html">About Us</a></li>
+    <li><a href="contact.html" class="nav__cta">Get Started</a></li>
+  </ul>
+  <div class="nav__hamburger" id="hamburger"><span></span><span></span><span></span></div>
+</nav>
+<div class="nav__mobile" id="mobileMenu">
+  <a href="index.html">Home</a>
+  <a href="products.html">Products</a>
+  <a href="how-it-works.html">How It Works</a>
+  <a href="about.html">About Us</a>
+  <a href="contact.html" class="nav__cta">Get Started</a>
+</div>
+
+<div class="page">
+
+<!-- ── HERO ──────────────────────────────────────────────────────────── -->
+<section class="hero">
+  <div class="hero__bg-text">AGRO</div>
+  <div class="hero__content">
+    <div class="hero__tag">🇨🇮 Abidjan, Côte d'Ivoire · Live Now</div>
+    <h1 class="hero__title">
+      From the<br/><em>Farm</em> to<br/>Your Table
+    </h1>
+    <p class="hero__desc">
+      AgroConnect CI is the digital marketplace that cuts out the middlemen — connecting Ivorian farmers directly with consumers, restaurants, and shops. Fresher food, fairer prices, faster delivery.
+    </p>
+    <div class="hero__actions">
+      <a href="products.html" class="btn btn--primary btn--lg">Shop Local Products </a>
+      <a href="how-it-works.html" class="btn btn--outline btn--lg">How It Works</a>
+    </div>
+    <div class="hero__stats">
+      <div class="hero__stat">
+        <div class="hero__stat-num"><span data-count="240" data-suffix="+">0+</span></div>
+        <div class="hero__stat-label">Local Farmers</div>
+      </div>
+      <div class="hero__stat">
+        <div class="hero__stat-num"><span data-count="6" data-suffix="">0</span></div>
+        <div class="hero__stat-label">Product Categories</div>
+      </div>
+      <div class="hero__stat">
+        <div class="hero__stat-num"><span data-count="48" data-suffix="h">0h</span></div>
+        <div class="hero__stat-label">Max Delivery Time</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating cards -->
+  <div style="position:absolute;right:5%;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:1rem;z-index:1;" class="hero-cards">
+    <div style="background:rgba(255,255,255,0.07);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,0.12);border-radius:16px;padding:1.2rem 1.5rem;display:flex;align-items:center;gap:12px;animation:float 4s ease-in-out infinite;">
+      <span style="font-size:2rem"><img src="img/Plantain.jfif" alt="Plantain" style="width: 50px; height: 50px; border-radius: 50%;"></span>
+      <div>
+        <div style="color:#fff;font-weight:600;font-size:0.9rem;">Plantain</div>
+        <div style="color:var(--gold);font-family:var(--ff-mono);font-size:0.75rem;">450 FCFA / kg</div>
+      </div>
+    </div>
+    <div style="background:rgba(255,255,255,0.07);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,0.12);border-radius:16px;padding:1.2rem 1.5rem;display:flex;align-items:center;gap:12px;animation:float 4s 1s ease-in-out infinite;">
+      <span style="font-size:2rem"><img src="img/boule_d'atieke.jfif" alt="Attiéké" style="width: 50px; height: 50px; border-radius: 50%;"></span>
+      <div>
+        <div style="color:#fff;font-weight:600;font-size:0.9rem;">Attiéké</div>
+        <div style="color:var(--gold);font-family:var(--ff-mono);font-size:0.75rem;">600 FCFA / pack</div>
+      </div>
+    </div>
+    <div style="background:rgba(255,255,255,0.07);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,0.12);border-radius:16px;padding:1.2rem 1.5rem;display:flex;align-items:center;gap:12px;animation:float 4s 2s ease-in-out infinite;">
+      <span style="font-size:2rem"><img src="img/cocoa_bean.jfif" alt="Cocoa" style="width: 50px; height: 50px; border-radius: 50%;"></span>
+      <div>
+        <div style="color:#fff;font-weight:600;font-size:0.9rem;">Cocoa</div>
+        <div style="color:var(--gold);font-family:var(--ff-mono);font-size:0.75rem;">1200 FCFA / kg</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Scrolling products strip ────────────────────────────────────────── -->
+<div class="products-strip">
+  <div class="strip-scroll">
+    <div class="strip-item"><span><img src="img/cocoa_bean.jfif" alt="Cocoa" style="width: 50px; height: 50px; border-radius: 50%;"></span> Cocoa Beans</div>
+    <div class="strip-item"><span><img src="img/boule_d'atieke.jfif" alt="Attiéké" style="width: 50px; height: 50px; border-radius: 50%;"></span> Attiéké / Cassava</div>
+    <div class="strip-item"><span><img src="img/Plantain.jfif" alt="Plantain" style="width: 50px; height: 50px; border-radius: 50%;"></span> Plantain</div>
+    <div class="strip-item"><span><img src="img/white_yam.jfif" alt="Yams" style="width: 50px; height: 50px; border-radius: 50%;"></span> Yams</div>
+    <div class="strip-item"><span><img src="img/redpalmoil.jfif" alt="Palm Oil" style="width: 50px; height: 50px; border-radius: 50%;"></span> Palm Oil</div>
+    <div class="strip-item"><span><img src="img/Leafy Greens Mix.jfif" alt="Fresh Vegetables" style="width: 50px; height: 50px; border-radius: 50%;"></span> Fresh Vegetables</div>
+    <div class="strip-item"><span><img src="img/Red_tomatoes.jfif" alt="Tomatoes" style="width: 50px; height: 50px; border-radius: 50%;"></span> Tomatoes</div>
+    <div class="strip-item"><span><img src="img/yellow_onion.jfif" alt="Onions" style="width: 50px; height: 50px; border-radius: 50%;"></span> Onions</div>
+    <div class="strip-item"><span><img src="img/hot_pepper.jfif" alt="Peppers" style="width: 50px; height: 50px; border-radius: 50%;"></span> Peppers</div>
+    <!-- duplicate for seamless loop -->
+    <div class="strip-item"><span><img src="img/cocoa_bean.jfif" alt="Cocoa" style="width: 50px; height: 50px; border-radius: 50%;"></span> Cocoa Beans</div>
+    <div class="strip-item"><span><img src="img/boule_d'atieke.jfif" alt="Attiéké" style="width: 50px; height: 50px; border-radius: 50%;"></span> Attiéké / Cassava</div>
+    <div class="strip-item"><span><img src="img/Plantain.jfif" alt="Plantain" style="width: 50px; height: 50px; border-radius: 50%;"></span> Plantain</div>
+    <div class="strip-item"><span><img src="img/white_yam.jfif" alt="Yams" style="width: 50px; height: 50px; border-radius: 50%;"></span> Yams</div>
+    <div class="strip-item"><span><img src="img/redpalmoil.jfif" alt="Palm Oil" style="width: 50px; height: 50px; border-radius: 50%;"></span> Palm Oil</div>
+    <div class="strip-item"><span><img src="img/Leafy Greens Mix.jfif" alt="Fresh Vegetables" style="width: 50px; height: 50px; border-radius: 50%;"></span> Fresh Vegetables</div>
+    <div class="strip-item"><span><img src="img/Red_tomatoes.jfif" alt="Tomatoes" style="width: 50px; height: 50px; border-radius: 50%;"></span> Tomatoes</div>
+    <div class="strip-item"><span><img src="img/yellow_onion.jfif" alt="Onions" style="width: 50px; height: 50px; border-radius: 50%;"></span> Onions</div>
+    <div class="strip-item"><span><img src="img/hot_pepper.jfif" alt="Peppers" style="width: 50px; height: 50px; border-radius: 50%;"></span> Peppers</div>
+  </div>
+</div>
+
+<!-- ── Why AgroConnect ──────────────────────────────────────────────────── -->
+<section class="section">
+  <div class="text-center mb-4 reveal">
+    <div class="section__tag">Why Choose Us</div>
+    <h2 class="section__title">A Better Way to Buy &amp; Sell</h2>
+    <p class="section__subtitle" style="margin:0 auto;">We believe fresh food should be accessible to everyone — and farmers deserve fair pay for their hard work.</p>
+  </div>
+  <div class="grid-3" style="margin-top:3rem;">
+    <div class="card reveal reveal-delay-1">
+      <div class="card__icon">🚫</div>
+      <h3 class="card__title">No Middlemen</h3>
+      <p class="card__text">Farmers sell directly to you. No brokers, no market stalls taking a cut. More money stays with the people who grow your food.</p>
+    </div>
+    <div class="card reveal reveal-delay-2">
+      <div class="card__icon">⚡</div>
+      <h3 class="card__title">Fast Delivery</h3>
+      <p class="card__text">Same-day or next-day delivery across Abidjan. Our network of local riders ensures your fresh produce arrives on time.</p>
+    </div>
+    <div class="card reveal reveal-delay-3">
+      <div class="card__icon">📱</div>
+      <h3 class="card__title">Mobile Money</h3>
+      <p class="card__text">Pay seamlessly with MTN Mobile Money, Orange Money, or cash on delivery. No bank account required.</p>
+    </div>
+    <div class="card reveal reveal-delay-1">
+      <div class="card__icon">✅</div>
+      <h3 class="card__title">Verified Farmers</h3>
+      <p class="card__text">Every seller on our platform is verified by our team. Buy with confidence knowing exactly where your food comes from.</p>
+    </div>
+    <div class="card reveal reveal-delay-2">
+      <div class="card__icon">🌿</div>
+      <h3 class="card__title">100% Local</h3>
+      <p class="card__text">Every product on AgroConnect CI is grown in Côte d'Ivoire. Support local agriculture, reduce imports, eat better.</p>
+    </div>
+    <div class="card reveal reveal-delay-3">
+      <div class="card__icon">💼</div>
+      <h3 class="card__title">Creates Jobs</h3>
+      <p class="card__text">Each delivery creates income for local riders. Each sale empowers a farmer. Every purchase contributes to the Ivorian economy.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── Impact numbers ──────────────────────────────────────────────────── -->
+<section class="section section--dark">
+  <div class="text-center mb-4 reveal">
+    <div class="section__tag">Our Impact</div>
+    <h2 class="section__title">Numbers That Tell the Story</h2>
+  </div>
+  <div class="impact-grid reveal">
+    <div class="impact-item">
+      <span class="impact-num" data-count="240" data-suffix="+">0</span>
+      <span class="impact-label">Registered Farmers</span>
+    </div>
+    <div class="impact-item">
+      <span class="impact-num" data-count="1800" data-suffix="+">0</span>
+      <span class="impact-label">Orders Delivered</span>
+    </div>
+    <div class="impact-item">
+      <span class="impact-num" data-count="12" data-suffix="">0</span>
+      <span class="impact-label">Abidjan Districts Covered</span>
+    </div>
+    <div class="impact-item">
+      <span class="impact-num" data-count="30" data-suffix="%">0</span>
+      <span class="impact-label">More Income for Farmers</span>
+    </div>
+  </div>
+</section>
+
+<!-- ── Featured Products ──────────────────────────────────────────────── -->
+<section class="section section--gold">
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3rem;" class="reveal">
+    <div>
+      <div class="section__tag section__tag--dark">Fresh Today</div>
+      <h2 class="section__title">Popular Products</h2>
+    </div>
+    <a href="products.html" class="btn btn--green">View All Products </a>
+  </div>
+  <div class="grid-4">
+    <div class="product-card reveal reveal-delay-1">
+      <div class="product-card__img" style="background:linear-gradient(135deg,#3d1f0a,#6b3a1f);"><img src="img/cocoa beans.jfif" alt="Cocoa Beans"></div>
+      <div class="product-card__body">
+        <div class="product-card__name">Cocoa Beans</div>
+        <div class="product-card__origin">📍 Région du Lôh-Djiboua</div>
+        <div style="display:flex;justify-content:space-between;align-items:center;">
+          <div class="product-card__price">1 200 FCFA <small>/ kg</small></div>
+          <span class="badge">In Season</span>
+        </div>
+      </div>
+    </div>
+    <div class="product-card reveal reveal-delay-2">
+      <div class="product-card__img" style="background:linear-gradient(135deg,#f5e6c0,#e8d5a0);"><img src="img/atieke_pack.jfif" alt="Attiéké Pack" width="270" height="180px"></div>
+      <div class="product-card__body">
+        <div class="product-card__name">Attiéké Pack</div>
+        <div class="product-card__origin">📍 Grand-Lahou</div>
+        <div style="display:flex;justify-content:space-between;align-items:center;">
+          <div class="product-card__price">600 FCFA <small>/ pack</small></div>
+          <span class="badge">Best Seller</span>
+        </div>
+      </div>
+    </div>
+    <div class="product-card reveal reveal-delay-3">
+      <div class="product-card__img" style="background:linear-gradient(135deg,#2d5a27,#4a8c42);"><img src="img/plantain_bunch.jfif" alt="Plantain Bunch" width="270" height="180px"></div>
+      <div class="product-card__body">
+        <div class="product-card__name">Plantain Bunch</div>
+        <div class="product-card__origin">📍 Région de l'Agnéby-Tiassa</div>
+        <div style="display:flex;justify-content:space-between;align-items:center;">
+          <div class="product-card__price">450 FCFA <small>/ kg</small></div>
+          <span class="badge">Fresh</span>
+        </div>
+      </div>
+    </div>
+    <div class="product-card reveal reveal-delay-3">
+      <div class="product-card__img" style="background:linear-gradient(135deg,#8b4513,#c0724a);"><img src="img/white_yam.jfif" alt="White Yam" width="270" height="180px"></div>
+      <div class="product-card__body">
+        <div class="product-card__name">White Yam</div>
+        <div class="product-card__origin">📍 Région du Hambol</div>
+        <div style="display:flex;justify-content:space-between;align-items:center;">
+          <div class="product-card__price">750 FCFA <small>/ kg</small></div>
+          <span class="badge">Popular</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Testimonials ────────────────────────────────────────────────────── -->
+<section class="section">
+  <div class="text-center mb-4 reveal">
+    <div class="section__tag">Voices</div>
+    <h2 class="section__title">What People Are Saying</h2>
+  </div>
+  <div class="grid-3">
+    <div class="testimonial reveal reveal-delay-1">
+      <p class="testimonial__text">Since joining AgroConnect CI, my weekly income has gone up by almost 35%. I sell directly from my farm — no more waiting at the market for hours.</p>
+      <div class="testimonial__author">
+        <div class="testimonial__avatar"><img src="img/farmer.jfif" alt="Cocoa" style="width: 50px; height: 50px; border-radius: 50%;"></div>
+        <div>
+          <div class="testimonial__name">Bamba Sékou</div>
+          <div class="testimonial__role">Cassava Farmer, Grand-Lahou</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial reveal reveal-delay-2">
+      <p class="testimonial__text">As a restaurant owner, I now order fresh vegetables every morning. They arrive by noon, fresher than anything from the market, and at a better price.</p>
+      <div class="testimonial__author">
+        <div class="testimonial__avatar"><img src="img/chef.jfif" alt="Restaurant Owner" style="width: 50px; height: 50px; border-radius: 50%;"></div>
+        <div>
+          <div class="testimonial__name">Koné Aminata</div>
+          <div class="testimonial__role">Restaurant Owner, Cocody</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial reveal reveal-delay-3">
+      <p class="testimonial__text">I love that I can buy local food from my phone with Orange Money. Delivery comes the same day. AgroConnect changed how my family eats.</p>
+      <div class="testimonial__author">
+        <div class="testimonial__avatar"><img src="img/customers.jfif" alt="Customer" style="width: 50px; height: 50px; border-radius: 50%;"></div>
+        <div>
+          <div class="testimonial__name">Traoré Fatoumata</div>
+          <div class="testimonial__role">Customer, Yopougon</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA Banner ──────────────────────────────────────────────────────── -->
+<section class="section section--mid" style="text-align:center;">
+  <div class="reveal">
+    <div class="section__tag">Join Now</div>
+    <h2 class="section__title">Ready to Eat Local?</h2>
+    <p class="section__subtitle" style="margin:0 auto 2.5rem;">Whether you're a farmer looking to reach more customers or a consumer wanting fresh local produce — AgroConnect CI is for you.</p>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+      <a href="contact.html" class="btn btn--primary btn--lg">Join as a Farmer</a>
+      <a href="products.html" class="btn btn--outline btn--lg">Start Shopping</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── Partners ────────────────────────────────────────────────────────── -->
+<section class="section partners">
+  <p class="partners-title">Trusted Payment Partners</p>
+
+  <div class="partners-grid reveal">
+    <div class="partner-logo">
+      <img src="img/mtn_money.jfif" alt="MTN MoMo">
+      <span>MTN MoMo</span>
+    </div>
+
+    <div class="partner-logo">
+      <img src="img/Orange money.jfif" alt="Orange Money">
+      <span>Orange Money</span>
+    </div>
+
+    <div class="partner-logo">
+      <img src="img/wave.jfif" alt="Wave CI">
+      <span>Wave CI</span>
+    </div>
+  </div>
+</section>
+
+</div><!-- /page -->
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer__grid">
+    <div class="footer__brand">
+      <div class="nav__logo" style="margin-bottom:1rem;">
+        <div class="nav__logo-icon">🌱</div>
+        Agro<span>Connect</span>&nbsp;CI
+      </div>
+      <p>Bridging the gap between rural producers and urban consumers through digital technology. Growing Côte d'Ivoire, digitally.</p>
+    </div>
+    <div class="footer__col">
+      <h4>Platform</h4>
+      <ul>
+        <li><a href="products.html">Browse Products</a></li>
+        <li><a href="how-it-works.html">How It Works</a></li>
+        <li><a href="contact.html">Become a Seller</a></li>
+        <li><a href="contact.html">Delivery Info</a></li>
+      </ul>
+    </div>
+    <div class="footer__col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="about.html#mission">Our Mission</a></li>
+        <li><a href="about.html#team">Team</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer__col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="#">📍 Abidjan, Côte d'Ivoire</a></li>
+        <li><a href="tel:+2250700000000">📞 +225 07 00 00 00 00</a></li>
+        <li><a href="mailto:hello@agroconnect.ci">✉️ hello@agroconnect.ci</a></li>
+        <li><a href="#">💬 WhatsApp Support</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <p>© 2025–2026 AgroConnect CI. All rights reserved. Made in 🇨🇮</p>
+    <div class="footer__socials">
+      <a href="#" title="Facebook">f</a>
+      <a href="#" title="Instagram">ig</a>
+      <a href="#" title="WhatsApp">wa</a>
+      <a href="#" title="LinkedIn">in</a>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

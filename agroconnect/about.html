@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Us — AgroConnect CI</title>
+  <meta name="description" content="Learn about AgroConnect CI's mission to empower Ivorian farmers and connect them with urban consumers through digital technology."/>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌱</text></svg>"/>
+  <style>
+    .team-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .team-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+    .team-card__avatar {
+      width: 100%; height: 200px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 5rem;
+    }
+    .team-card__body { padding: 1.4rem; }
+    .team-card__name { font-family: var(--ff-display); font-size: 1.1rem; font-weight: 900; margin-bottom: 0.2rem; }
+    .team-card__role { font-family: var(--ff-mono); font-size: 0.72rem; letter-spacing: 1px; text-transform: uppercase; color: var(--gold); margin-bottom: 0.8rem; }
+    .team-card__bio  { font-size: 0.83rem; color: var(--text-mid); line-height: 1.6; }
+
+    .value-card {
+      padding: 2rem;
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(0,0,0,0.07);
+      transition: all 0.3s;
+    }
+    .value-card:hover {
+      border-color: var(--green-bright);
+      box-shadow: 0 0 0 3px rgba(46,139,74,0.08);
+      transform: translateY(-4px);
+    }
+    .value-card__num {
+      font-family: var(--ff-display);
+      font-size: 3rem; font-weight: 900;
+      color: var(--green-light);
+      line-height: 1; margin-bottom: 0.5rem;
+    }
+    .value-card__title { font-family: var(--ff-display); font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .value-card__text  { font-size: 0.88rem; color: var(--text-mid); line-height: 1.65; }
+
+    .roadmap-item {
+      display: grid; grid-template-columns: 80px 1fr;
+      gap: 1.5rem; align-items: start;
+      padding: 1.5rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .roadmap-item:last-child { border-bottom: none; }
+    .roadmap-year {
+      font-family: var(--ff-mono);
+      font-size: 0.85rem; font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 1px;
+    }
+    .roadmap-content h4 { font-family: var(--ff-display); font-size: 1rem; font-weight: 700; color: var(--white); margin-bottom: 0.3rem; }
+    .roadmap-content p  { font-size: 0.85rem; color: rgba(255,255,255,0.55); line-height: 1.6; }
+    .roadmap-status {
+      display: inline-block;
+      font-size: 0.68rem; font-weight: 700; font-family: var(--ff-mono);
+      letter-spacing: 1px; text-transform: uppercase;
+      padding: 2px 10px; border-radius: 100px;
+      margin-bottom: 0.4rem;
+    }
+    .status-done    { background: rgba(46,139,74,0.2); color: var(--green-bright); }
+    .status-current { background: rgba(212,160,23,0.2); color: var(--gold); }
+    .status-next    { background: rgba(255,255,255,0.07); color: rgba(255,255,255,0.4); }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <a href="index.html" class="nav__logo">
+    <div class="nav__logo-icon"><img src="img/business_logo.jfif" alt="AgroConnect CI" width="50px" height="50px" style="border-radius:50%"></div>
+    Agro<span>Connect</span>&nbsp;CI
+  </a>
+  <ul class="nav__links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="products.html">Products</a></li>
+    <li><a href="how-it-works.html">How It Works</a></li>
+    <li><a href="about.html">About Us</a></li>
+    <li><a href="contact.html" class="nav__cta">Get Started</a></li>
+  </ul>
+  <div class="nav__hamburger" id="hamburger"><span></span><span></span><span></span></div>
+</nav>
+<div class="nav__mobile" id="mobileMenu">
+  <a href="index.html">Home</a>
+  <a href="products.html">Products</a>
+  <a href="how-it-works.html">How It Works</a>
+  <a href="about.html">About Us</a>
+  <a href="contact.html" class="nav__cta">Get Started</a>
+</div>
+
+<div class="page">
+
+<!-- Page Hero -->
+<div class="page-hero" id="mission">
+  <div class="page-hero__content">
+    <div class="section__tag">Our Story</div>
+    <h1 class="page-hero__title">We're Building the Future<br/>of Food in Côte d'Ivoire</h1>
+    <p class="page-hero__desc">AgroConnect CI started with a simple observation: farmers were struggling to sell their produce while city families struggled to find affordable, fresh food. Digital technology is our solution.</p>
+  </div>
+</div>
+
+<!-- ── Mission Statement ──────────────────────────────────────────────── -->
+<section class="section">
+  <div class="grid-2" style="gap:4rem;align-items:center;">
+    <div class="reveal">
+      <div class="section__tag">Our Mission</div>
+      <h2 class="section__title">Bridging the Gap, Digitally</h2>
+      <p class="section__subtitle">AgroConnect CI bridges the gap between rural producers and urban consumers using digital technology — improving income for farmers while providing affordable fresh food.</p>
+      <div style="margin-top:2rem;display:flex;flex-direction:column;gap:1rem;">
+        <div style="display:flex;align-items:center;gap:12px;">
+          <span style="width:36px;height:36px;background:var(--gold-light);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;">🌱</span>
+          <span style="font-size:0.9rem;color:var(--text-mid);">Empower smallholder farmers across Côte d'Ivoire</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;">
+          <span style="width:36px;height:36px;background:var(--gold-light);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;">🛒</span>
+          <span style="font-size:0.9rem;color:var(--text-mid);">Make fresh, local food accessible to every urban household</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;">
+          <span style="width:36px;height:36px;background:var(--gold-light);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;">💼</span>
+          <span style="font-size:0.9rem;color:var(--text-mid);">Create sustainable jobs in delivery, tech, and support</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;">
+          <span style="width:36px;height:36px;background:var(--gold-light);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;">🇨🇮</span>
+          <span style="font-size:0.9rem;color:var(--text-mid);">Strengthen Côte d'Ivoire's food sovereignty and local economy</span>
+        </div>
+      </div>
+    </div>
+    <div class="reveal reveal-delay-2">
+      <div style="background:var(--green-dark);border-radius:var(--radius-lg);padding:2.5rem;position:relative;overflow:hidden;">
+        <div style="position:absolute;right:-10px;bottom:-20px;font-size:8rem;opacity:0.06;pointer-events:none;">🌾</div>
+        <blockquote style="position:relative;z-index:1;">
+          <div style="font-size:3rem;color:var(--gold);font-family:var(--ff-display);line-height:1;margin-bottom:1rem;">"</div>
+          <p style="font-family:var(--ff-display);font-size:1.3rem;font-weight:700;color:var(--white);line-height:1.5;margin-bottom:1.5rem;">Fresh food. Fair prices. Empowered farmers.</p>
+          <p style="font-size:0.9rem;color:rgba(255,255,255,0.55);line-height:1.7;">We believe that every farmer in Côte d'Ivoire deserves access to a fair market — and every family deserves access to fresh, affordable food. Technology is how we make that happen.</p>
+        </blockquote>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Our Values ──────────────────────────────────────────────────────── -->
+<section class="section section--gold">
+  <div class="text-center mb-4 reveal">
+    <div class="section__tag section__tag--dark">Principles</div>
+    <h2 class="section__title">What We Stand For</h2>
+  </div>
+  <div class="grid-4" style="margin-top:2.5rem;">
+    <div class="value-card reveal reveal-delay-1">
+      <div class="value-card__num">01</div>
+      <div class="value-card__title">Farmer First</div>
+      <div class="value-card__text">Every decision we make starts with the question: does this help the farmer? Their income, dignity, and independence come first.</div>
+    </div>
+    <div class="value-card reveal reveal-delay-2">
+      <div class="value-card__num">02</div>
+      <div class="value-card__title">Radical Transparency</div>
+      <div class="value-card__text">Farmers see exactly how much we earn per sale. Customers see exactly where their food comes from. No hidden fees, no opacity.</div>
+    </div>
+    <div class="value-card reveal reveal-delay-3">
+      <div class="value-card__num">03</div>
+      <div class="value-card__title">Local Always</div>
+      <div class="value-card__text">We will never list imported products when a local alternative exists. Our platform is a celebration of Ivorian agriculture.</div>
+    </div>
+    <div class="value-card reveal reveal-delay-3">
+      <div class="value-card__num">04</div>
+      <div class="value-card__title">Accessible Tech</div>
+      <div class="value-card__text">Technology should include people, not exclude them. Our tools work on basic smartphones, in French, and even by voice or SMS.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Social Impact ──────────────────────────────────────────────────── -->
+<section class="section section--dark">
+  <div class="text-center mb-4 reveal">
+    <div class="section__tag">Social Impact</div>
+    <h2 class="section__title">More Than a Marketplace</h2>
+    <p style="color:rgba(255,255,255,0.6);font-size:0.95rem;max-width:580px;margin:0 auto;">AgroConnect CI is a social project built inside a business model. Every transaction creates ripple effects across the Ivorian economy.</p>
+  </div>
+  <div class="grid-2" style="margin-top:3rem;gap:2rem;">
+    <div>
+      <h3 style="font-family:var(--ff-display);font-size:1.3rem;color:var(--gold);font-weight:900;margin-bottom:1.2rem;">Social Benefits</h3>
+      <div style="display:flex;flex-direction:column;gap:1rem;">
+        <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:var(--radius);padding:1.2rem;">
+          <div style="font-size:1.3rem;margin-bottom:0.4rem;">👩‍🌾</div>
+          <div style="font-weight:600;color:var(--white);margin-bottom:0.3rem;">Women Farmer Empowerment</div>
+          <div style="font-size:0.85rem;color:rgba(255,255,255,0.5);">Over 60% of our registered farmers are women. We offer free onboarding support in local languages.</div>
+        </div>
+        <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:var(--radius);padding:1.2rem;">
+          <div style="font-size:1.3rem;margin-bottom:0.4rem;">♻️</div>
+          <div style="font-weight:600;color:var(--white);margin-bottom:0.3rem;">Reduced Food Waste</div>
+          <div style="font-size:0.85rem;color:rgba(255,255,255,0.5);">Farmers sell faster, food moves quicker. Estimated 25% reduction in post-harvest waste among our partner farms.</div>
+        </div>
+        <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:var(--radius);padding:1.2rem;">
+          <div style="font-size:1.3rem;margin-bottom:0.4rem;">🎓</div>
+          <div style="font-weight:600;color:var(--white);margin-bottom:0.3rem;">Youth Employment in Tech</div>
+          <div style="font-size:0.85rem;color:rgba(255,255,255,0.5);">Our platform is built and maintained by young Ivorian engineers and developers, creating careers in the local tech sector.</div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <h3 style="font-family:var(--ff-display);font-size:1.3rem;color:var(--gold);font-weight:900;margin-bottom:1.2rem;">Economic Benefits</h3>
+      <div style="display:flex;flex-direction:column;gap:1rem;">
+        <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:var(--radius);padding:1.2rem;">
+          <div style="font-size:1.3rem;margin-bottom:0.4rem;">💰</div>
+          <div style="font-weight:600;color:var(--white);margin-bottom:0.3rem;">Higher Farmer Income</div>
+          <div style="font-size:0.85rem;color:rgba(255,255,255,0.5);">By cutting middlemen, farmers earn 25–40% more per kilogram of produce sold through our platform.</div>
+        </div>
+        <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:var(--radius);padding:1.2rem;">
+          <div style="font-size:1.3rem;margin-bottom:0.4rem;">🇨🇮</div>
+          <div style="font-weight:600;color:var(--white);margin-bottom:0.3rem;">Import Substitution</div>
+          <div style="font-size:0.85rem;color:rgba(255,255,255,0.5);">Every local product bought on AgroConnect CI is a product not imported. We strengthen Côte d'Ivoire's food sovereignty.</div>
+        </div>
+        <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:var(--radius);padding:1.2rem;">
+          <div style="font-size:1.3rem;margin-bottom:0.4rem;">🛵</div>
+          <div style="font-weight:600;color:var(--white);margin-bottom:0.3rem;">Delivery Job Creation</div>
+          <div style="font-size:0.85rem;color:rgba(255,255,255,0.5);">We directly employ and support over 80 local delivery riders across Abidjan, with more coming as we expand.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Impact numbers -->
+  <div class="impact-grid reveal" style="margin-top:3rem;">
+    <div class="impact-item">
+      <span class="impact-num" data-count="240" data-suffix="+">0</span>
+      <span class="impact-label">Farmers on Platform</span>
+    </div>
+    <div class="impact-item">
+      <span class="impact-num" data-count="80" data-suffix="+">0</span>
+      <span class="impact-label">Delivery Jobs Created</span>
+    </div>
+    <div class="impact-item">
+      <span class="impact-num" data-count="25" data-suffix="%">0</span>
+      <span class="impact-label">Less Food Waste</span>
+    </div>
+    <div class="impact-item">
+      <span class="impact-num" data-count="35" data-suffix="%">0</span>
+      <span class="impact-label">Avg. Farmer Income Increase</span>
+    </div>
+  </div>
+</section>
+
+<!-- ── Team ────────────────────────────────────────────────────────────── -->
+<section class="section" id="team">
+  <div class="text-center mb-4 reveal">
+    <div class="section__tag">The Team</div>
+    <h2 class="section__title">Who's Building This</h2>
+    <p class="section__subtitle" style="margin:0 auto;">A small, passionate team of Ivorians committed to changing how food moves in our country.</p>
+  </div>
+  <div class="grid-4" style="margin-top:2.5rem;">
+    <div class="team-card reveal reveal-delay-1">
+      <div class="team-card__avatar" style="background:linear-gradient(135deg,var(--green-dark),var(--green-mid));">👨‍💻</div>
+      <div class="team-card__body">
+        <div class="team-card__name">Aymeric K.</div>
+        <div class="team-card__role">Founder &amp; Tech Lead</div>
+        <div class="team-card__bio">CS student at AVU Abidjan. Builds the platform, leads product vision, and advocates for farmer-first technology.</div>
+      </div>
+    </div>
+    <div class="team-card reveal reveal-delay-2">
+      <div class="team-card__avatar" style="background:linear-gradient(135deg,var(--gold),#c49a22);">👩‍🌾</div>
+      <div class="team-card__body">
+        <div class="team-card__name">Adjoua M.</div>
+        <div class="team-card__role">Farmer Relations Lead</div>
+        <div class="team-card__bio">Grew up on a cassava farm in Grand-Lahou. Coordinates farmer onboarding and training in Dioula and French.</div>
+      </div>
+    </div>
+    <div class="team-card reveal reveal-delay-3">
+      <div class="team-card__avatar" style="background:linear-gradient(135deg,var(--soil),#8b5234);">👨‍📦</div>
+      <div class="team-card__body">
+        <div class="team-card__name">Koné D.</div>
+        <div class="team-card__role">Logistics Manager</div>
+        <div class="team-card__bio">10 years in Abidjan logistics. Manages our rider network, route optimization, and pickup point partnerships.</div>
+      </div>
+    </div>
+    <div class="team-card reveal reveal-delay-3">
+      <div class="team-card__avatar" style="background:linear-gradient(135deg,#2d5a27,#4a8c42);">👩‍💼</div>
+      <div class="team-card__body">
+        <div class="team-card__name">Traoré S.</div>
+        <div class="team-card__role">Business Development</div>
+        <div class="team-card__bio">Former B2B sales manager. Builds restaurant and retail partnerships, and leads our expansion strategy.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Roadmap ──────────────────────────────────────────────────────────── -->
+<section class="section section--dark">
+  <div class="grid-2" style="gap:4rem;align-items:start;">
+    <div class="reveal">
+      <div class="section__tag">Roadmap</div>
+      <h2 class="section__title">Where We're Going</h2>
+      <p style="color:rgba(255,255,255,0.6);font-size:0.95rem;line-height:1.7;margin-bottom:2rem;">We're building this one step at a time — with a clear vision of what AgroConnect CI looks like at scale.</p>
+      <a href="contact.html" class="btn btn--primary">Join the Journey </a>
+    </div>
+    <div class="reveal reveal-delay-2">
+      <div class="roadmap-item">
+        <div>
+          <div class="roadmap-year">2025</div>
+          <span class="roadmap-status status-done">Completed</span>
+        </div>
+        <div class="roadmap-content">
+          <h4>Platform Launch — Abidjan</h4>
+          <p>Website live, first 100 farmers onboarded, Mobile Money integration, first 500 orders delivered.</p>
+        </div>
+      </div>
+      <div class="roadmap-item">
+        <div>
+          <div class="roadmap-year">2026</div>
+          <span class="roadmap-status status-current">In Progress</span>
+        </div>
+        <div class="roadmap-content">
+          <h4>Mobile App &amp; B2B Expansion</h4>
+          <p>Android app launch, 500+ farmers, restaurant B2B program, Cocody and Yopougon priority zones fully covered.</p>
+        </div>
+      </div>
+      <div class="roadmap-item">
+        <div>
+          <div class="roadmap-year">2027</div>
+          <span class="roadmap-status status-next">Planned</span>
+        </div>
+        <div class="roadmap-content">
+          <h4>National Expansion</h4>
+          <p>Launch in Bouaké, Yamoussoukro, and San-Pédro. Cold chain logistics. 1,000+ farmer milestone.</p>
+        </div>
+      </div>
+      <div class="roadmap-item">
+        <div>
+          <div class="roadmap-year">2028</div>
+          <span class="roadmap-status status-next">Vision</span>
+        </div>
+        <div class="roadmap-content">
+          <h4>West Africa Expansion</h4>
+          <p>Pilot in Senegal and Ghana with adapted local models. Become the #1 agri-marketplace in West Africa.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ─────────────────────────────────────────────────────────────── -->
+<section class="section section--gold" style="text-align:center;">
+  <div class="reveal">
+    <div class="section__tag section__tag--dark">Work With Us</div>
+    <h2 class="section__title">Believe in What We're Building?</h2>
+    <p class="section__subtitle" style="margin:0 auto 2.5rem;">Whether as a farmer, investor, partner, or team member — there's a place for you at AgroConnect CI.</p>
+    <a href="contact.html" class="btn btn--green btn--lg">Get in Touch </a>
+  </div>
+</section>
+
+</div><!-- /page -->
+
+<footer class="footer">
+  <div class="footer__grid">
+    <div class="footer__brand">
+      <div class="nav__logo" style="margin-bottom:1rem;">
+        <div class="nav__logo-icon"><img src="img/business_logo.jfif" alt="AgroConnect CI" width="50px" height="50px" style="border-radius:50%"></div>
+        Agro<span>Connect</span>&nbsp;CI
+      </div>
+      <p>Bridging the gap between rural producers and urban consumers. Growing Côte d'Ivoire, digitally.</p>
+    </div>
+    <div class="footer__col"><h4>Platform</h4><ul><li><a href="products.html">Browse Products</a></li><li><a href="how-it-works.html">How It Works</a></li><li><a href="contact.html">Become a Seller</a></li></ul></div>
+    <div class="footer__col"><h4>Company</h4><ul><li><a href="about.html">About Us</a></li><li><a href="about.html#mission">Our Mission</a></li><li><a href="about.html#team">Team</a></li></ul></div>
+    <div class="footer__col"><h4>Contact</h4><ul><li><a href="#">📍 Abidjan, CI</a></li><li><a href="mailto:hello@agroconnect.ci">✉️ hello@agroconnect.ci</a></li></ul></div>
+  </div>
+  <div class="footer__bottom">
+    <p>© 2025–2026 AgroConnect CI. All rights reserved. Made in 🇨🇮</p>
+    <div class="footer__socials"><a href="#">f</a><a href="#">ig</a><a href="#">wa</a></div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

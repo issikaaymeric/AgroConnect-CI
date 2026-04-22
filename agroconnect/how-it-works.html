@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>How It Works — AgroConnect CI</title>
+  <meta name="description" content="Learn how AgroConnect CI connects farmers and buyers — from listing products to doorstep delivery in Abidjan."/>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌱</text></svg>"/>
+  <style>
+    .timeline {
+      position: relative;
+      padding-left: 3rem;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 16px; top: 0; bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--gold), var(--green-bright));
+    }
+    .timeline-item {
+      position: relative;
+      margin-bottom: 2.5rem;
+    }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -2.7rem; top: 4px;
+      width: 14px; height: 14px;
+      border-radius: 50%;
+      background: var(--gold);
+      border: 3px solid var(--green-dark);
+      box-shadow: 0 0 0 3px rgba(212,160,23,0.3);
+    }
+    .timeline-item h3 {
+      font-family: var(--ff-display);
+      font-size: 1.1rem; font-weight: 700;
+      color: var(--white); margin-bottom: 0.4rem;
+    }
+    .timeline-item p { font-size: 0.9rem; color: rgba(255,255,255,0.65); line-height: 1.65; }
+
+    .role-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .role-card__header {
+      padding: 2rem;
+      text-align: center;
+    }
+    .role-card__img { font-size: 3.5rem; margin-bottom: 0.8rem; }
+    .role-card__title { font-family: var(--ff-display); font-size: 1.4rem; font-weight: 900; margin-bottom: 0.3rem; }
+    .role-card__subtitle { font-size: 0.85rem; color: var(--text-muted); }
+    .role-card__body { padding: 1.5rem 2rem 2rem; border-top: 1px solid rgba(0,0,0,0.06); }
+    .role-card__body li {
+      display: flex; align-items: flex-start; gap: 10px;
+      margin-bottom: 0.8rem;
+      font-size: 0.88rem; color: var(--text-mid); line-height: 1.55;
+    }
+    .role-card__body li::before { content: '✓'; color: var(--green-mid); font-weight: 700; flex-shrink: 0; }
+
+    .payment-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 1.8rem;
+      box-shadow: var(--shadow);
+      border-top: 4px solid var(--gold);
+      transition: transform 0.25s;
+    }
+    .payment-card:hover { transform: translateY(-4px); }
+    .payment-card__logo { font-size: 2.5rem; margin-bottom: 0.8rem; border-radius: 15px; overflow: hidden}
+    .payment-card__name { font-family: var(--ff-display); font-size: 1.1rem; font-weight: 700; margin-bottom: 0.4rem; }
+    .payment-card__desc { font-size: 0.85rem; color: var(--text-mid); line-height: 1.6; }
+
+    .delivery-map {
+      background: var(--green-dark);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+      min-height: 280px;
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .delivery-map::before {
+      content: '🗺️';
+      position: absolute; right: 1rem; bottom: 0;
+      font-size: 10rem; opacity: 0.07;
+    }
+    .district-grid {
+      display: grid; grid-template-columns: repeat(3,1fr); gap: 0.6rem;
+      margin-top: 1rem;
+    }
+    .district {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 8px; padding: 8px 12px;
+      font-size: 0.8rem; color: rgba(255,255,255,0.75);
+      text-align: center;
+    }
+    .district.highlight {
+      background: rgba(212,160,23,0.2);
+      border-color: rgba(212,160,23,0.4);
+      color: var(--gold);
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <a href="index.html" class="nav__logo">
+    <div class="nav__logo-icon"><img src="img/business_logo.jfif" alt="AgroConnect CI" width="50px" height="50px" style="border-radius:50%"></div>
+    Agro<span>Connect</span>&nbsp;CI
+  </a>
+  <ul class="nav__links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="products.html">Products</a></li>
+    <li><a href="how-it-works.html">How It Works</a></li>
+    <li><a href="about.html">About Us</a></li>
+    <li><a href="contact.html" class="nav__cta">Get Started</a></li>
+  </ul>
+  <div class="nav__hamburger" id="hamburger"><span></span><span></span><span></span></div>
+</nav>
+<div class="nav__mobile" id="mobileMenu">
+  <a href="index.html">Home</a>
+  <a href="products.html">Products</a>
+  <a href="how-it-works.html">How It Works</a>
+  <a href="about.html">About Us</a>
+  <a href="contact.html" class="nav__cta">Get Started</a>
+</div>
+
+<div class="page">
+
+<!-- Page Hero -->
+<div class="page-hero">
+  <div class="page-hero__content">
+    <div class="section__tag">Simple Process</div>
+    <h1 class="page-hero__title">How AgroConnect CI Works</h1>
+    <p class="page-hero__desc">From farm to table in a few simple steps. Whether you're a farmer or a customer, we've made the process easy, even without technical experience.</p>
+  </div>
+</div>
+
+<!-- ── Two Flows ──────────────────────────────────────────────────────── -->
+<section class="section">
+  <div class="text-center mb-4 reveal">
+    <div class="section__tag">Two Roles</div>
+    <h2 class="section__title">Who's on the Platform?</h2>
+    <p class="section__subtitle" style="margin:0 auto;">AgroConnect CI serves two main groups — farmers who sell, and customers who buy.</p>
+  </div>
+  <div class="grid-3" style="margin-top:3rem;">
+
+    <div class="role-card reveal reveal-delay-1">
+      <div class="role-card__header" style="background:linear-gradient(135deg,var(--green-dark),var(--green-mid));">
+        <div class="role-card__img"><img src="img/African farmer.jfif" alt="African Farmer"></div>
+        <div class="role-card__title" style="color:var(--white);">Farmers</div>
+        <div class="role-card__subtitle" style="color:rgba(255,255,255,0.6);">Sellers on the platform</div>
+      </div>
+      <div class="role-card__body">
+        <ul>
+          <li>Create a free seller profile with phone number</li>
+          <li>List products with photos, quantity, and price</li>
+          <li>Receive order notifications via SMS or WhatsApp</li>
+          <li>Prepare products for pickup by delivery riders</li>
+          <li>Get paid directly to Mobile Money wallet</li>
+          <li>Track sales and earnings via simple dashboard</li>
+        </ul>
+        <a href="contact.html" class="btn btn--green" style="width:100%;justify-content:center;margin-top:1rem;">Register as a Farmer </a>
+      </div>
+    </div>
+
+    <div class="role-card reveal reveal-delay-2">
+      <div class="role-card__header" style="background:linear-gradient(135deg,var(--gold),#c49a22);">
+        <div class="role-card__img"><img src="img/customer.jfif" alt="Customer"></div>
+        <div class="role-card__title">Customers</div>
+        <div class="role-card__subtitle">Buyers on the platform</div>
+      </div>
+      <div class="role-card__body">
+        <ul>
+          <li>Browse fresh products by category or search</li>
+          <li>Select items and add to cart</li>
+          <li>Choose delivery or pickup point</li>
+          <li>Pay with Mobile Money or cash on delivery</li>
+          <li>Track your order in real time</li>
+          <li>Rate the farmer and leave feedback</li>
+        </ul>
+        <a href="products.html" class="btn btn--primary" style="width:100%;justify-content:center;margin-top:1rem;">Start Shopping </a>
+      </div>
+    </div>
+
+    <div class="role-card reveal reveal-delay-3">
+      <div class="role-card__header" style="background:linear-gradient(135deg,var(--soil),#8b5234);">
+        <div class="role-card__img"><img src="img/Business.jfif" alt="Business"></div>
+        <div class="role-card__title" style="color:var(--white);">Businesses</div>
+        <div class="role-card__subtitle" style="color:rgba(255,255,255,0.6);">Restaurants &amp; retailers</div>
+      </div>
+      <div class="role-card__body">
+        <ul>
+          <li>Set up a business account with bulk ordering</li>
+          <li>Subscribe to weekly or daily supply packages</li>
+          <li>Get priority delivery slots every morning</li>
+          <li>Dedicated account manager for your needs</li>
+          <li>Invoice and payment reporting tools</li>
+          <li>Negotiate custom pricing for large volumes</li>
+        </ul>
+        <a href="contact.html" class="btn btn--outline" style="width:100%;justify-content:center;margin-top:1rem;background:var(--green-dark);color:white;">Become B2B Partner </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── Customer Journey ───────────────────────────────────────────────── -->
+<section class="section section--dark">
+  <div class="grid-2" style="gap:4rem;">
+    <div class="reveal">
+      <div class="section__tag">Customer Journey</div>
+      <h2 class="section__title">Order in 4 Easy Steps</h2>
+      <p style="color:rgba(255,255,255,0.6);font-size:0.95rem;margin-bottom:2.5rem;">You don't need to be tech-savvy. If you can use WhatsApp, you can use AgroConnect CI.</p>
+      <div class="timeline">
+        <div class="timeline-item reveal reveal-delay-1">
+          <h3>1. Browse &amp; Choose</h3>
+          <p>Open the website or app, search for what you need — tomatoes, plantain, yams. See fresh stock listed with prices and farm location.</p>
+        </div>
+        <div class="timeline-item reveal reveal-delay-2">
+          <h3>2. Add to Cart &amp; Confirm</h3>
+          <p>Select your quantity, choose home delivery or a nearby pickup point, and confirm your order. You'll get a confirmation via SMS.</p>
+        </div>
+        <div class="timeline-item reveal reveal-delay-3">
+          <h3>3. Pay Your Way</h3>
+          <p>Pay with MTN MoMo, Orange Money, or choose cash on delivery. Your payment is held securely until the order is delivered.</p>
+        </div>
+        <div class="timeline-item reveal">
+          <h3>4. Receive &amp; Enjoy</h3>
+          <p>A local rider delivers to your door — usually same day or next morning. Rate your experience and the farmer gets paid instantly.</p>
+        </div>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="section__tag">Farmer Journey</div>
+      <h2 class="section__title">Sell Without Leaving Your Farm</h2>
+      <p style="color:rgba(255,255,255,0.6);font-size:0.95rem;margin-bottom:2.5rem;">Register once, and buyers come to you. No market, no broker, no transportation cost.</p>
+      <div class="timeline">
+        <div class="timeline-item reveal reveal-delay-1">
+          <h3>1. Register Free</h3>
+          <p>Sign up with your phone number. Our team will verify your identity and help you set up your seller profile in your local language if needed.</p>
+        </div>
+        <div class="timeline-item reveal reveal-delay-2">
+          <h3>2. List Your Products</h3>
+          <p>Take a photo of your produce, enter the quantity and price. Our simple interface is designed for low-data Android phones.</p>
+        </div>
+        <div class="timeline-item reveal reveal-delay-3">
+          <h3>3. Receive Orders</h3>
+          <p>When a customer orders, you get an alert on WhatsApp or SMS. Prepare the order and wait for the rider to come collect it from your farm or a nearby point.</p>
+        </div>
+        <div class="timeline-item reveal">
+          <h3>4. Get Paid Instantly</h3>
+          <p>Once delivery is confirmed, money is transferred directly to your MTN or Orange Money account. No waiting, no intermediaries.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Payment ─────────────────────────────────────────────────────────── -->
+<section class="section section--gold">
+  <div class="text-center mb-4 reveal">
+    <div class="section__tag section__tag--dark">Payments</div>
+    <h2 class="section__title">Simple, Secure Payments</h2>
+    <p class="section__subtitle" style="margin:0 auto;">We support the payment methods that Ivorians actually use — no bank account required.</p>
+  </div>
+  <div class="grid-4" style="margin-top:2.5rem;">
+    <div class="payment-card reveal reveal-delay-1">
+      <div class="payment-card__logo"><img src="img/mtn_money.jfif" alt=""></div>
+      <div class="payment-card__name">MTN Mobile Money</div>
+      <div class="payment-card__desc">The most used mobile payment service in Côte d'Ivoire. Instant transfer, available 24/7.</div>
+    </div>
+    <div class="payment-card reveal reveal-delay-2">
+      <div class="payment-card__logo"><img src="img/Orange money.jfif" alt=""></div>
+      <div class="payment-card__name">Orange Money</div>
+      <div class="payment-card__desc">Widely used across Abidjan and rural areas. Simple USSD code payment, no internet needed.</div>
+    </div>
+    <div class="payment-card reveal reveal-delay-3">
+      <div class="payment-card__logo"><img src="img/wave.jfif" alt=""></div>
+      <div class="payment-card__name">Wave CI</div>
+      <div class="payment-card__desc">Fast digital wallet with zero transfer fees. Popular among younger urban users in Abidjan.</div>
+    </div>
+    <div class="payment-card reveal reveal-delay-3">
+      <div class="payment-card__logo">💵</div>
+      <div class="payment-card__name">Cash on Delivery</div>
+      <div class="payment-card__desc">Not comfortable with digital payments yet? Pay the rider in cash when your order arrives at your door.</div>
+    </div>
+  </div>
+  <p class="text-center" style="margin-top:2rem;font-size:0.85rem;color:var(--text-mid);">🔒 All digital transactions are encrypted and processed through BCEAO-compliant gateways.</p>
+</section>
+
+<!-- ── Delivery Coverage ───────────────────────────────────────────────── -->
+<section class="section">
+  <div class="grid-2" style="gap:3rem;">
+    <div class="reveal">
+      <div class="section__tag">Delivery</div>
+      <h2 class="section__title">Where We Deliver</h2>
+      <p class="section__subtitle">We currently serve all major districts of Abidjan, with pickup points in every commune.</p>
+      <div style="margin-top:2rem;display:flex;flex-direction:column;gap:1rem;">
+        <div class="card" style="flex-direction:row;align-items:center;gap:1.2rem;padding:1.2rem;">
+          <div class="card__icon" style="margin:0;flex-shrink:0;">🛵</div>
+          <div>
+            <div class="card__title" style="font-size:1rem;">Home Delivery</div>
+            <div class="card__text">Local riders deliver to your exact address. Same-day within Abidjan for orders placed before 12pm.</div>
+          </div>
+        </div>
+        <div class="card" style="flex-direction:row;align-items:center;gap:1.2rem;padding:1.2rem;">
+          <div class="card__icon" style="margin:0;flex-shrink:0;">📦</div>
+          <div>
+            <div class="card__title" style="font-size:1rem;">Pickup Points</div>
+            <div class="card__text">Collect your order at a nearby partner location — pharmacy, shop, or community center. Free of charge.</div>
+          </div>
+        </div>
+        <div class="card" style="flex-direction:row;align-items:center;gap:1.2rem;padding:1.2rem;">
+          <div class="card__icon" style="margin:0;flex-shrink:0;">🚐</div>
+          <div>
+            <div class="card__title" style="font-size:1rem;">Bulk B2B Delivery</div>
+            <div class="card__text">For restaurants and retailers — scheduled morning deliveries with a dedicated van. Minimum order applies.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="reveal reveal-delay-2">
+      <div class="delivery-map">
+        <div class="section__tag" style="margin-bottom:1rem;">Coverage Map</div>
+        <h3 style="font-family:var(--ff-display);font-size:1.5rem;color:var(--white);font-weight:900;margin-bottom:0.5rem;">Abidjan Districts</h3>
+        <p style="color:rgba(255,255,255,0.55);font-size:0.85rem;margin-bottom:1rem;">All 13 communes covered</p>
+        <div class="district-grid">
+          <div class="district highlight">Cocody</div>
+          <div class="district highlight">Yopougon</div>
+          <div class="district highlight">Marcory</div>
+          <div class="district highlight">Treichville</div>
+          <div class="district highlight">Adjamé</div>
+          <div class="district highlight">Plateau</div>
+          <div class="district">Abobo</div>
+          <div class="district">Koumassi</div>
+          <div class="district">Port-Bouët</div>
+          <div class="district">Attécoubé</div>
+          <div class="district">Bingerville</div>
+          <div class="district">Songon</div>
+        </div>
+        <p style="color:rgba(255,255,255,0.4);font-size:0.75rem;margin-top:1rem;">🟡 Priority zones · ⬛ Full coverage</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FAQ ─────────────────────────────────────────────────────────────── -->
+<section class="section section--gold">
+  <div class="text-center mb-4 reveal">
+    <div class="section__tag section__tag--dark">FAQ</div>
+    <h2 class="section__title">Common Questions</h2>
+  </div>
+  <div style="max-width:720px;margin:0 auto;" id="faqList">
+
+    <div class="faq-item reveal" style="border-bottom:1px solid rgba(0,0,0,0.08);padding:1.5rem 0;">
+      <div class="faq-q" style="display:flex;justify-content:space-between;cursor:pointer;font-weight:600;font-size:0.95rem;">
+        Is registration free for farmers?
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-a" style="display:none;margin-top:0.8rem;font-size:0.9rem;color:var(--text-mid);line-height:1.7;">
+        Yes, 100% free. Farmers pay nothing to register or list products. AgroConnect CI earns a small commission (5–8%) only when a sale is completed.
+      </div>
+    </div>
+
+    <div class="faq-item reveal" style="border-bottom:1px solid rgba(0,0,0,0.08);padding:1.5rem 0;">
+      <div class="faq-q" style="display:flex;justify-content:space-between;cursor:pointer;font-weight:600;font-size:0.95rem;">
+        What is the delivery time?
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-a" style="display:none;margin-top:0.8rem;font-size:0.9rem;color:var(--text-mid);line-height:1.7;">
+        Orders placed before 12pm are usually delivered the same day in Abidjan. All orders are guaranteed within 48 hours. B2B partners can schedule daily morning deliveries.
+      </div>
+    </div>
+
+    <div class="faq-item reveal" style="border-bottom:1px solid rgba(0,0,0,0.08);padding:1.5rem 0;">
+      <div class="faq-q" style="display:flex;justify-content:space-between;cursor:pointer;font-weight:600;font-size:0.95rem;">
+        What if I receive a bad product?
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-a" style="display:none;margin-top:0.8rem;font-size:0.9rem;color:var(--text-mid);line-height:1.7;">
+        We have a quality guarantee. If the product doesn't match its description, contact us within 2 hours of delivery via WhatsApp or phone. We'll arrange a refund or replacement at no extra cost.
+      </div>
+    </div>
+
+    <div class="faq-item reveal" style="border-bottom:1px solid rgba(0,0,0,0.08);padding:1.5rem 0;">
+      <div class="faq-q" style="display:flex;justify-content:space-between;cursor:pointer;font-weight:600;font-size:0.95rem;">
+        Do I need a smartphone to use AgroConnect CI?
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-a" style="display:none;margin-top:0.8rem;font-size:0.9rem;color:var(--text-mid);line-height:1.7;">
+        The website works on any phone with a browser. For farmers with basic phones, our support team can help set up listings by phone call or WhatsApp. We also offer SMS notifications for order updates.
+      </div>
+    </div>
+
+    <div class="faq-item reveal" style="border-bottom:1px solid rgba(0,0,0,0.08);padding:1.5rem 0;">
+      <div class="faq-q" style="display:flex;justify-content:space-between;cursor:pointer;font-weight:600;font-size:0.95rem;">
+        How are payments protected?
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-a" style="display:none;margin-top:0.8rem;font-size:0.9rem;color:var(--text-mid);line-height:1.7;">
+        Customer payments are held in escrow until the order is confirmed delivered. The farmer is only paid after successful delivery. All transactions use BCEAO-compliant, encrypted gateways.
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── CTA ─────────────────────────────────────────────────────────────── -->
+<section class="section section--mid" style="text-align:center;">
+  <div class="reveal">
+    <div class="section__tag">Ready?</div>
+    <h2 class="section__title">Start Today — It's Free</h2>
+    <p class="section__subtitle" style="margin:0 auto 2.5rem;">Whether you're a farmer or a buyer, getting started takes less than 5 minutes.</p>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+      <a href="contact.html" class="btn btn--primary btn--lg">Register as a Farmer</a>
+      <a href="products.html" class="btn btn--outline btn--lg">Browse Products</a>
+    </div>
+  </div>
+</section>
+
+</div><!-- /page -->
+
+<footer class="footer">
+  <div class="footer__grid">
+    <div class="footer__brand">
+      <div class="nav__logo" style="margin-bottom:1rem;">
+        <div class="nav__logo-icon">🌱</div>
+        Agro<span>Connect</span>&nbsp;CI
+      </div>
+      <p>Bridging the gap between rural producers and urban consumers through digital technology.</p>
+    </div>
+    <div class="footer__col"><h4>Platform</h4><ul><li><a href="products.html">Browse Products</a></li><li><a href="how-it-works.html">How It Works</a></li><li><a href="contact.html">Become a Seller</a></li></ul></div>
+    <div class="footer__col"><h4>Company</h4><ul><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div class="footer__col"><h4>Contact</h4><ul><li><a href="#">📍 Abidjan, CI</a></li><li><a href="tel:+2250700000000">📞 +225 07 00 00 00 00</a></li></ul></div>
+  </div>
+  <div class="footer__bottom">
+    <p>© 2025–2026 AgroConnect CI. All rights reserved. Made in 🇨🇮</p>
+    <div class="footer__socials"><a href="#">f</a><a href="#">ig</a><a href="#">wa</a></div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script>
+  document.querySelectorAll('.faq-q').forEach(q => {
+    q.addEventListener('click', () => {
+      const item = q.parentElement;
+      const ans  = item.querySelector('.faq-a');
+      const icon = item.querySelector('.faq-icon');
+      const open = ans.style.display === 'block';
+      // Close all
+      document.querySelectorAll('.faq-a').forEach(a => a.style.display = 'none');
+      document.querySelectorAll('.faq-icon').forEach(i => i.textContent = '+');
+      if (!open) { ans.style.display = 'block'; icon.textContent = '−'; }
+    });
+  });
+</script>
+</body>
+</html>

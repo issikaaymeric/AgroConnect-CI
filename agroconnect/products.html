@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Products — AgroConnect CI</title>
+  <meta name="description" content="Browse fresh local products from Ivorian farmers — cocoa, cassava, plantain, yams, palm oil, vegetables and more."/>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌱</text></svg>"/>
+  <style>
+    .filter-bar {
+      display: flex; gap: 0.75rem; flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+    }
+    .filter-btn {
+      padding: 8px 20px;
+      border-radius: 100px;
+      border: 1.5px solid rgba(0,0,0,0.12);
+      background: var(--white);
+      font-family: var(--ff-body);
+      font-size: 0.85rem; font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: var(--green-mid);
+      color: var(--white);
+      border-color: var(--green-mid);
+    }
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+    .product-card[data-hidden] { display: none; }
+    .product-detail-modal {
+      display: none;
+      position: fixed; inset: 0; z-index: 5000;
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(4px);
+      align-items: center; justify-content: center;
+      padding: 2rem;
+    }
+    .product-detail-modal.open { display: flex; }
+    .modal-box {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 3.5rem;
+      max-width: 500px; width: 100%;
+      height: 800px;
+      position: relative;
+      animation: fadeUp 0.3s ease;
+    }
+    .modal-close {
+      position: absolute; top: 1rem; right: 1.2rem;
+      font-size: 1.5rem; cursor: pointer; color: var(--text-muted);
+      background: none; border: none; line-height: 1;
+    }
+    .modal-close:hover { color: var(--text-dark); }
+    .modal-image { font-size: 4rem; margin-bottom: 1rem; display: flex; align-items: center; justify-content: center; width:100%; height:250px}
+    .modal-name { font-family: var(--ff-display); font-size: 1.8rem; font-weight: 900; margin-bottom: 0.4rem; }
+    .modal-origin { font-family: var(--ff-mono); font-size: 0.78rem; color: var(--text-muted); margin-bottom: 1rem; }
+    .modal-price { font-size: 1.4rem; font-weight: 700; color: var(--green-mid); margin-bottom: 1rem; }
+    .modal-desc { font-size: 0.9rem; color: var(--text-mid); line-height: 1.7; margin-bottom: 1.5rem; }
+    .qty-row { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; }
+    .qty-btn {
+      width: 36px; height: 36px; border-radius: 50%;
+      border: 1.5px solid rgba(0,0,0,0.15);
+      background: none; font-size: 1.1rem; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.2s;
+    }
+    .qty-btn:hover { background: var(--green-mid); color: var(--white); border-color: var(--green-mid); }
+    .qty-num { font-size: 1.1rem; font-weight: 700; min-width: 24px; text-align: center; }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <a href="index.html" class="nav__logo">
+    <div class="nav__logo-icon"><img src="img/business_logo.jfif" alt="AgroConnect CI" width="50px" height="50px" style="border-radius:50%"></div>
+    Agro<span>Connect</span>&nbsp;CI
+  </a>
+  <ul class="nav__links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="products.html">Products</a></li>
+    <li><a href="how-it-works.html">How It Works</a></li>
+    <li><a href="about.html">About Us</a></li>
+    <li><a href="contact.html" class="nav__cta">Get Started</a></li>
+  </ul>
+  <div class="nav__hamburger" id="hamburger"><span></span><span></span><span></span></div>
+</nav>
+<div class="nav__mobile" id="mobileMenu">
+  <a href="index.html">Home</a>
+  <a href="products.html">Products</a>
+  <a href="how-it-works.html">How It Works</a>
+  <a href="about.html">About Us</a>
+  <a href="contact.html" class="nav__cta">Get Started</a>
+</div>
+
+<div class="page">
+
+<!-- Page Hero -->
+<div class="page-hero">
+  <div class="page-hero__content">
+    <div class="section__tag">Fresh Today</div>
+    <h1 class="page-hero__title">Local Products,<br/>Direct from Farmers</h1>
+    <p class="page-hero__desc">Everything you buy on AgroConnect CI is grown in Côte d'Ivoire. Browse, order, and get it delivered to your door.</p>
+  </div>
+</div>
+
+<!-- Products Section -->
+<section class="section">
+
+  <!-- Filter bar -->
+  <div class="filter-bar reveal">
+    <button class="filter-btn active" data-filter="all">All Products</button>
+    <button class="filter-btn" data-filter="staple">Staples 🍠</button>
+    <button class="filter-btn" data-filter="produce">Vegetables 🥬</button>
+    <button class="filter-btn" data-filter="oils">Oils & Spices 🫙</button>
+    <button class="filter-btn" data-filter="export">Export Crops 🍫</button>
+  </div>
+
+  <!-- Products grid -->
+  <div class="products-grid">
+
+    <!-- Cocoa -->
+    <div class="product-card reveal" data-category="export"
+         data-name="Cocoa Beans" data-image="img/cocoa beans.jfif" data-price="1 200 FCFA / kg"
+         data-origin="Région du Lôh-Djiboua" data-season="In Season"
+         data-desc="Premium grade cocoa beans from certified local farmers in the Lôh-Djiboua region. Harvested and sun-dried using traditional methods. Perfect for chocolate makers, exporters, and specialty buyers."
+         data-bg="linear-gradient(135deg,#3d1f0a,#6b3a1f)">
+      <div class="product-card__img" style="background:linear-gradient(135deg,#3d1f0a,#6b3a1f);"><img src="img/cocoa beans.jfif" alt="Cocoa Beans"></div>
+      <div class="product-card__body">
+        <div class="product-card__name">Cocoa Beans</div>
+        <div class="product-card__origin">📍 Lôh-Djiboua</div>
+        <div style="display:flex;justify-content:space-between;align-items:center;">
+          <div class="product-card__price">1 200 FCFA <small>/ kg</small></div>
+          <span class="badge">In Season</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Attiéké -->
+    <div class="product-card reveal reveal-delay-1" data-category="staple"
+         data-name="Attiéké (Cassava)" data-image="img/atieke_pack.jfif" data-price="600 FCFA / pack"
+         data-origin="Grand-Lahou" data-season="Best Seller"
+         data-desc="Freshly prepared attiéké — fermented and granulated cassava, a staple side dish in Côte d'Ivoire. Our attiéké is made the traditional way by women cooperatives in Grand-Lahou and delivered fresh daily."
+         data-bg="linear-gradient(135deg,#f5e6c0,#e8d5a0)">
+      <div class="product-card__img" style="background:linear-gradient(135deg,#f5e6c0,#e8d5a0);"><img src="img/atieke_pack.jfif" alt="Attiéké Pack" width="270" height="180px"></div>
+      <div class="product-card__body">
+        <div class="product-card__name">Attiéké (Cassava)</div>
+        <div class="product-card__origin">📍 Grand-Lahou</div>
+        <div style="display:flex;justify-content:space-between;align-items:center;">
+          <div class="product-card__price">600 FCFA <small>/ pack</small></div>
+          <span class="badge">Best Seller</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Plantain -->
+    <div class="product-card reveal reveal-delay-2" data-category="staple"
+         data-name="Plantain Bunch" data-image="img/plantain_bunch.jfif" data-price="450 FCFA / kg"
+         data-origin="Agnéby-Tiassa" data-season="Fresh"
+         data-desc="Sweet and firm plantains, perfect for frying, boiling, or grilling. Grown in the fertile Agnéby-Tiassa region and harvested at peak ripeness. Sold by the bunch or per kilogram."
+         data-bg="linear-gradient(135deg,#2d5a27,#4a8c42)">
+      <div class="product-card__img" style="background:linear-gradient(135deg,#2d5a27,#4a8c42);"><img src="img/plantain_bunch.jfif" alt="Plantain Bunch" width="270" height="180px"></div>
+      <div class="product-card__body">
+        <div class="product-card__name">Plantain Bunch</div>
+        <div class="product-card__origin">📍 Agnéby-Tiassa</div>
+        <div style="display:flex;justify-content:space-between;align-items:center;">
+          <div class="product-card__price">450 FCFA <small>/ kg</small></div>
+          <span class="badge">Fresh</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Yam -->
+    <div class="product-card reveal" data-category="staple"
+         data-name="White Yam" data-image="img/white_yam.jfif" data-price="750 FCFA / kg"
+         data-origin="Région du Hambol" data-season="Popular"
+         data-desc="Premium white yam from northern Côte d'Ivoire. A versatile staple used in fufu, yam fries, and soups. Our yams are sourced directly from smallholder farmers and delivered fresh without cold storage compromise."
+         data-bg="linear-gradient(135deg,#8b4513,#c0724a)">
+      <div class="product-card__img" style="background:linear-gradient(135deg,#8b4513,#c0724a);"><img src="img/white_yam.jfif" alt="White Yam" width="270" height="180px"></div>
+      <div class="product-card__body">
+        <div class="product-card__name">White Yam</div>
+        <div class="product-card__origin">📍 Région du Hambol</div>
+        <div style="display:flex;justify-content:space-between;align-items:center;">
+          <div class="product-card__price">750 FCFA <small>/ kg</small></div>
+          <span class="badge">Popular</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Palm Oil -->
+    <div class="product-card reveal reveal-delay-1" data-category="oils"
+         data-name="Red Palm Oil" data-image="img/redpalmoil.jfif" data-price="1 500 FCFA / litre"
+         data-origin="San-Pédro Region" data-season="Artisanal"
+         data-desc="Pure, unrefined red palm oil produced by local cooperatives in the San-Pédro region. Rich in vitamins A and E, used in soups, stews, and traditional Ivorian dishes. No additives, no preservatives."
+         data-bg="linear-gradient(135deg,#c0392b,#e67e22)">
+      <div class="product-card__img" style="background:linear-gradient(135deg,#c0392b,#e67e22);"><img src="img/redpalmoil.jfif" alt="Red Palm Oil" width="270" height="180px"></div>
+      <div class="product-card__body">
+        <div class="product-card__name">Red Palm Oil</div>
+        <div class="product-card__origin">📍 San-Pédro Region</div>
+        <div style="display:flex;justify-content:space-between;align-items:center;">
+          <div class="product-card__price">1 500 FCFA <small>/ litre</small></div>
+          <span class="badge">Artisanal</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tomatoes -->
+    <div class="product-card reveal reveal-delay-2" data-category="produce"
+         data-name="Fresh Tomatoes" data-image="img/Red_tomatoes.jfif" data-price="400 FCFA / kg"
+         data-origin="Région des Savanes" data-season="Daily Harvest"
+         data-desc="Ripe, locally grown tomatoes harvested daily from farms in the Savanes region. Available in small and large varieties. Essential for sauces, stews, and fresh salads. Delivered within 24h of harvest."
+         data-bg="linear-gradient(135deg,#c0392b,#96281b)">
+      <div class="product-card__img" style="background:linear-gradient(135deg,#c0392b,#96281b);"><img src="img/Red_tomatoes.jfif" alt="Fresh Tomatoes" width="270" height="180px"></div>
+      <div class="product-card__body">
+        <div class="product-card__name">Fresh Tomatoes</div>
+        <div class="product-card__origin">📍 Région des Savanes</div>
+        <div style="display:flex;justify-content:space-between;align-items:center;">
+          <div class="product-card__price">400 FCFA <small>/ kg</small></div>
+          <span class="badge">Daily Harvest</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Onions -->
+    <div class="product-card reveal" data-category="produce"
+         data-name="Yellow Onions" data-image="img/yellow_onion.jfif" data-price="350 FCFA / kg"
+         data-origin="Région du Poro" data-season="In Stock"
+         data-desc="Large, flavorful yellow onions grown in the Poro region of northern Côte d'Ivoire. Used in virtually every Ivorian dish as a base ingredient. Sold per kilogram or in bulk bags for restaurants."
+         data-bg="linear-gradient(135deg,#9b7b3a,#d4a017)">
+      <div class="product-card__img" style="background:linear-gradient(135deg,#9b7b3a,#d4a017);"><img src="img/yellow_onion.jfif" alt="Yellow Onions" width="270" height="180px"></div>
+      <div class="product-card__body">
+        <div class="product-card__name">Yellow Onions</div>
+        <div class="product-card__origin">📍 Région du Poro</div>
+        <div style="display:flex;justify-content:space-between;align-items:center;">
+          <div class="product-card__price">350 FCFA <small>/ kg</small></div>
+          <span class="badge">In Stock</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Peppers -->
+    <div class="product-card reveal reveal-delay-1" data-category="produce"
+         data-name="Hot Peppers" data-image="img/hot_pepper.jfif" data-price="500 FCFA / kg"
+         data-origin="Région de la Bagoué" data-season="Spicy 🔥"
+         data-desc="Fiery local peppers for sauces, marinades, and cooking. A key ingredient in Ivorian cuisine including kedjenou and grilled dishes. These are harvested at full heat and delivered fresh."
+         data-bg="linear-gradient(135deg,#c0392b,#7b241c)">
+      <div class="product-card__img" style="background:linear-gradient(135deg,#c0392b,#7b241c);"><img src="img/hot_pepper.jfif" alt="Hot Peppers" width="270" height="180px"></div>
+      <div class="product-card__body">
+        <div class="product-card__name">Hot Peppers</div>
+        <div class="product-card__origin">📍 Région de la Bagoué</div>
+        <div style="display:flex;justify-content:space-between;align-items:center;">
+          <div class="product-card__price">500 FCFA <small>/ kg</small></div>
+          <span class="badge">Spicy 🔥</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Leafy Greens -->
+    <div class="product-card reveal reveal-delay-2" data-category="produce"
+         data-name="Leafy Greens Mix" data-image="img/Leafy Greens Mix.jfif" data-price="250 FCFA / bundle"
+         data-origin="Abidjan Peri-urban" data-season="Today's Pick"
+         data-desc="A fresh bundle of mixed leafy greens — including gboma (African eggplant leaves), water spinach, and bitter leaf — grown in peri-urban farms around Abidjan. Harvested every morning, delivered same day."
+         data-bg="linear-gradient(135deg,#1a5c2e,#2e8b4a)">
+      <div class="product-card__img" style="background:linear-gradient(135deg,#1a5c2e,#2e8b4a);"><img src="img/Leafy Greens Mix.jfif" alt="Leafy Greens Mix" width="270" height="180px"></div>
+      <div class="product-card__body">
+        <div class="product-card__name">Leafy Greens Mix</div>
+        <div class="product-card__origin">📍 Abidjan Peri-urban</div>
+        <div style="display:flex;justify-content:space-between;align-items:center;">
+          <div class="product-card__price">250 FCFA <small>/ bundle</small></div>
+          <span class="badge">Today's Pick</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cashew -->
+    <div class="product-card reveal" data-category="export"
+         data-name="Raw Cashew Nuts" data-image="img/Raw Cashew Nuts.jfif" data-price="2 000 FCFA / kg"
+         data-origin="Région de Séguéla" data-season="Export Grade"
+         data-desc="Premium raw cashew nuts from Séguéla — one of Côte d'Ivoire's major cashew-producing regions. These are unroasted, suitable for processing or export. Sold in bulk for wholesalers and retailers."
+         data-bg="linear-gradient(135deg,#c49a22,#9b7b3a)">
+      <div class="product-card__img" style="background:linear-gradient(135deg,#c49a22,#9b7b3a);"><img src="img/Raw Cashew Nuts.jfif" alt="Raw Cashew Nuts" width="270" height="180px"></div>
+      <div class="product-card__body">
+        <div class="product-card__name">Raw Cashew Nuts</div>
+        <div class="product-card__origin">📍 Région de Séguéla</div>
+        <div style="display:flex;justify-content:space-between;align-items:center;">
+          <div class="product-card__price">2 000 FCFA <small>/ kg</small></div>
+          <span class="badge">Export Grade</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Eggplant -->
+    <div class="product-card reveal reveal-delay-1" data-category="produce"
+         data-name="African Eggplant" data-image="img/African Eggplant.jfif" data-price="300 FCFA / kg"
+         data-origin="Bouaké Environs" data-season="In Season"
+         data-desc="Small round African eggplant (garden egg), commonly used in Ivorian stews and sauces. Rich in fiber and minerals. Sourced from urban-edge farms near Bouaké, available year-round."
+         data-bg="linear-gradient(135deg,#6b2fa0,#9b59b6)">
+      <div class="product-card__img" style="background:linear-gradient(135deg,#6b2fa0,#9b59b6);"><img src="img/African Eggplant.jfif" alt="African Eggplant" width="270" height="180px"></div>
+      <div class="product-card__body">
+        <div class="product-card__name">African Eggplant</div>
+        <div class="product-card__origin">📍 Bouaké Environs</div>
+        <div style="display:flex;justify-content:space-between;align-items:center;">
+          <div class="product-card__price">300 FCFA <small>/ kg</small></div>
+          <span class="badge">In Season</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ginger -->
+    <div class="product-card reveal reveal-delay-2" data-category="oils"
+         data-name="Fresh Ginger Root" data-image="img/Fresh Ginger Root.jfif" data-price="900 FCFA / kg"
+         data-origin="Man Region" data-season="Aromatic"
+         data-desc="Pungent, aromatic fresh ginger from the Man region in the west of Côte d'Ivoire. Used in teas, marinades, and medicinal drinks including the popular gingembre drink. High essential oil content."
+         data-bg="linear-gradient(135deg,#9b7b3a,#c49a22)">
+      <div class="product-card__img" style="background:linear-gradient(135deg,#9b7b3a,#c49a22);"><img src="img/Fresh Ginger Root.jfif" alt="Fresh Ginger Root" width="270" height="180px"></div>
+      <div class="product-card__body">
+        <div class="product-card__name">Fresh Ginger Root</div>
+        <div class="product-card__origin">📍 Man Region</div>
+        <div style="display:flex;justify-content:space-between;align-items:center;">
+          <div class="product-card__price">900 FCFA <small>/ kg</small></div>
+          <span class="badge">Aromatic</span>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /products-grid -->
+</section>
+
+<!-- B2B Banner -->
+<section class="section section--dark" style="padding-top:56px;padding-bottom:56px;">
+  <div style="display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;" class="reveal">
+    <div>
+      <div class="section__tag">For Businesses</div>
+      <h2 class="section__title" style="font-size:2rem;">Restaurant or Shop Owner?</h2>
+      <p style="color:rgba(255,255,255,0.65);font-size:0.95rem;max-width:500px;margin-top:0.5rem;">Get bulk pricing, priority delivery, and a dedicated account manager. Partner with AgroConnect CI for your daily fresh supply.</p>
+    </div>
+    <a href="contact.html" class="btn btn--primary btn--lg">Become a B2B Partner </a>
+  </div>
+</section>
+
+</div><!-- /page -->
+
+<!-- Product Modal -->
+<div class="product-detail-modal" id="productModal">
+  <div class="modal-box">
+    <button class="modal-close" id="modalClose">✕</button>
+    <div class="modal-image" id="modalImage">🍫</div>
+    <div class="modal-name" id="modalName">Product Name</div>
+    <div class="modal-origin" id="modalOrigin">📍 Region</div>
+    <span class="badge" id="modalSeason">In Season</span>
+    <div class="modal-price" id="modalPrice">0 FCFA</div>
+    <p class="modal-desc" id="modalDesc">Description</p>
+    <div class="qty-row">
+      <button class="qty-btn" id="qtyMinus">−</button>
+      <span class="qty-num" id="qtyNum">1</span>
+      <button class="qty-btn" id="qtyPlus">+</button>
+      <span style="font-size:0.85rem;color:var(--text-muted);margin-left:0.5rem;">kg / unit</span>
+    </div>
+    <a href="contact.html" class="btn btn--green" style="width:100%;justify-content:center;">
+      Order via WhatsApp / Contact 
+    </a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer__grid">
+    <div class="footer__brand">
+      <div class="nav__logo" style="margin-bottom:1rem;">
+        <div class="nav__logo-icon">🌱</div>
+        Agro<span>Connect</span>&nbsp;CI
+      </div>
+      <p>Bridging the gap between rural producers and urban consumers through digital technology. Growing Côte d'Ivoire, digitally.</p>
+    </div>
+    <div class="footer__col">
+      <h4>Platform</h4>
+      <ul><li><a href="products.html">Browse Products</a></li><li><a href="how-it-works.html">How It Works</a></li><li><a href="contact.html">Become a Seller</a></li></ul>
+    </div>
+    <div class="footer__col">
+      <h4>Company</h4>
+      <ul><li><a href="about.html">About Us</a></li><li><a href="about.html#mission">Our Mission</a></li><li><a href="contact.html">Contact</a></li></ul>
+    </div>
+    <div class="footer__col">
+      <h4>Contact</h4>
+      <ul><li><a href="#">📍 Abidjan, CI</a></li><li><a href="tel:+2250700000000">📞 +225 07 00 00 00 00</a></li><li><a href="mailto:hello@agroconnect.ci">✉️ hello@agroconnect.ci</a></li></ul>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <p>© 2025–2026 AgroConnect CI. All rights reserved. Made in 🇨🇮</p>
+    <div class="footer__socials">
+      <a href="#" title="Facebook">f</a><a href="#" title="Instagram">ig</a><a href="#" title="WhatsApp">wa</a>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script>
+  // ─── Filter logic
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+      document.querySelectorAll('.product-card').forEach(card => {
+        if (filter === 'all' || card.dataset.category === filter) {
+          card.removeAttribute('data-hidden');
+          card.style.display = '';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  });
+
+  // ─── Modal logic
+  const modal    = document.getElementById('productModal');
+  const modalClose = document.getElementById('modalClose');
+  let qty = 1;
+
+  document.querySelectorAll('.product-card').forEach(card => {
+    card.addEventListener('click', () => {
+      document.getElementById('modalImage').innerHTML = `<img src="${card.dataset.image}" alt="${card.dataset.name}" width="270" height="180px">`;
+      document.getElementById('modalName').textContent   = card.dataset.name;
+      document.getElementById('modalOrigin').textContent = '📍 ' + card.dataset.origin;
+      document.getElementById('modalSeason').textContent = card.dataset.season;
+      document.getElementById('modalPrice').textContent  = card.dataset.price;
+      document.getElementById('modalDesc').textContent   = card.dataset.desc;
+      qty = 1;
+      document.getElementById('qtyNum').textContent = qty;
+      modal.classList.add('open');
+    });
+  });
+  modalClose.addEventListener('click', () => modal.classList.remove('open'));
+  modal.addEventListener('click', (e) => { if (e.target === modal) modal.classList.remove('open'); });
+  document.getElementById('qtyPlus').addEventListener('click',  () => { qty++; document.getElementById('qtyNum').textContent = qty; });
+  document.getElementById('qtyMinus').addEventListener('click', () => { if (qty > 1) { qty--; document.getElementById('qtyNum').textContent = qty; } });
+</script>
+</body>
+</html>
